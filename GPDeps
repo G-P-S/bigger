@@ -19,6 +19,7 @@
         {"url": "git@github.com:G-P-S/glfw.git@master"},
         {"url": "git@github.com:G-P-S/bgfx.git@master"},
         {"url": "git@github.com:G-P-S/bx.git@master"},
-        {"url": "git@github.com:G-P-S/bimg.git@master"}
+        {"url": "git@github.com:G-P-S/bimg.git@master"},
+        {"url": "git@github.com:G-P-S/glm.git@master"}
     ]
 }

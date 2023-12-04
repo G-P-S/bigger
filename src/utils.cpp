@@ -29,9 +29,10 @@ namespace bgfx_utils
     {
         if (bx::open(_reader, _filePath))
         {
+            bx::Error err;
             uint32_t size = (uint32_t) bx::getSize(_reader);
-            void*    data = BX_ALLOC(_allocator, size);
-            bx::read(_reader, data, size);
+            void*    data = bx::alloc(_allocator, size);
+            bx::read(_reader, data, size, &err);
             bx::close(_reader);
             if (NULL != _size)
             {
@@ -57,7 +58,7 @@ namespace bgfx_utils
         return load(getFileReader(), getAllocator(), _filePath, _size);
     }
 
-    void unload(void* _ptr) { BX_FREE(getAllocator(), _ptr); }
+    void unload(void* _ptr) { bx::free(getAllocator(), _ptr); }
 
     static void imageReleaseCb(void* _ptr, void* _userData)
     {
@@ -155,7 +156,6 @@ std::string bigger::getShaderDirectoryPath(const bgfx::RendererType::Enum render
 {
     switch (renderer_type)
     {
-    case bgfx::RendererType::Direct3D9: return "shaders/dx9";
     case bgfx::RendererType::Direct3D11:
     case bgfx::RendererType::Direct3D12: return "shaders/dx11";
     case bgfx::RendererType::Metal: return "shaders/metal";

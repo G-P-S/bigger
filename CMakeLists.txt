@@ -23,22 +23,21 @@ set(GLFW_USE_RETINA         ON  CACHE INTERNAL "" FORCE)
 set(GLFW_USE_OSMESA         OFF CACHE INTERNAL "" FORCE)
 set(GLFW_VULKAN_STATIC      OFF CACHE INTERNAL "" FORCE)
 set(LIB_SUFFIX              ""  CACHE INTERNAL "" FORCE)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/external/bigg)
+
+set(TINYOBJLOADER_BUILD_OBJ_STICHER OFF CACHE INTERNAL "" FORCE)
+set(TINYOBJLOADER_BUILD_TEST_LOADER OFF CACHE INTERNAL "" FORCE)
+set(TINYOBJLOADER_USE_DOUBLE        OFF CACHE INTERNAL "" FORCE)
+
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../bigg ${CMAKE_BINARY_DIR}/bigg)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../rand-util ${CMAKE_BINARY_DIR}/rand-util)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../string-util ${CMAKE_BINARY_DIR}/string-util)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../tinyobjloader ${CMAKE_BINARY_DIR}/tinyobjloader)
 
 # Note: This was necessary to avoid a run-time error on macOS/OpenGL. Without
 # this option, the NSOpenGLViewContext's setView method was called from a
 # wrong (?) thread during bgfx::init and then the app crashes. This needs to be
 # investigated further.
 target_compile_definitions(bgfx PUBLIC BGFX_CONFIG_MULTITHREADED=0)
-
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/external/rand-util)
-
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/external/string-util)
-
-set(TINYOBJLOADER_BUILD_OBJ_STICHER OFF CACHE INTERNAL "" FORCE)
-set(TINYOBJLOADER_BUILD_TEST_LOADER OFF CACHE INTERNAL "" FORCE)
-set(TINYOBJLOADER_USE_DOUBLE        OFF CACHE INTERNAL "" FORCE)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/external/tinyobjloader)
 
 set(headers
   ${CMAKE_CURRENT_SOURCE_DIR}/include/bigger/app.hpp
@@ -73,6 +72,16 @@ set(shaders
 )
 
 add_library(bigger STATIC ${headers} ${sources} ${shaders})
+
+target_sources(bigger
+  PRIVATE
+    ../implot/implot_demo.cpp
+    ../implot/implot_internal.h
+    ../implot/implot_items.cpp
+    ../implot/implot.cpp
+    ../implot/implot.h
+)
+
 target_link_libraries(bigger PUBLIC bigg rand-util string-util tinyobjloader)
 target_include_directories(bigger PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
