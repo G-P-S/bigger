@@ -9,17 +9,17 @@
 
     "deps":
     [
-        {"url": "git@github.com:G-P-S/bigg.git@master"},
+        {"url": "git@github.com:G-P-S/bigg.git@gp-1"},
+        {"url": "git@github.com:G-P-S/bgfx.cmake.git@gp-1"},
         {"url": "git@github.com:G-P-S/tinyobjloader.git@release"},
         {"url": "git@github.com:G-P-S/rand-util.git@master"},
         {"url": "git@github.com:G-P-S/string-util.git@master"},
-        {"url": "git@github.com:G-P-S/bgfx.cmake.git@master"},
         {"url": "git@github.com:G-P-S/imgui.git@master"},
         {"url": "git@github.com:G-P-S/implot.git@master"},
-        {"url": "git@github.com:G-P-S/glfw.git@master"},
         {"url": "git@github.com:G-P-S/bgfx.git@master"},
         {"url": "git@github.com:G-P-S/bx.git@master"},
         {"url": "git@github.com:G-P-S/bimg.git@master"},
+        {"url": "git@github.com:G-P-S/glfw.git@master"},
         {"url": "git@github.com:G-P-S/glm.git@master"}
     ]
 }
