@@ -1,0 +1,24 @@
+{
+    "version": "1.0.0",
+
+    "info": {
+        "type": "lib",
+        "visibility": "public",
+        "platforms": ["linux", "macos", "win"]
+    },
+
+    "deps":
+    [
+        {"url": "git@github.com:G-P-S/bigg.git@master"},
+        {"url": "git@github.com:G-P-S/tinyobjloader.git@release"},
+        {"url": "git@github.com:G-P-S/rand-util.git@master"},
+        {"url": "git@github.com:G-P-S/string-util.git@master"},
+        {"url": "git@github.com:G-P-S/bgfx.cmake.git@master"},
+        {"url": "git@github.com:G-P-S/imgui.git@master"},
+        {"url": "git@github.com:G-P-S/implot.git@master"},
+        {"url": "git@github.com:G-P-S/glfw.git@master"},
+        {"url": "git@github.com:G-P-S/bgfx.git@master"},
+        {"url": "git@github.com:G-P-S/bx.git@master"},
+        {"url": "git@github.com:G-P-S/bimg.git@master"}
+    ]
+}
