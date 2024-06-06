@@ -73,14 +73,14 @@ set(shaders
 
 add_library(bigger STATIC ${headers} ${sources} ${shaders})
 
-target_sources(bigger
-  PRIVATE
-    ../implot/implot_demo.cpp
-    ../implot/implot_internal.h
-    ../implot/implot_items.cpp
-    ../implot/implot.cpp
-    ../implot/implot.h
-)
+# target_sources(bigger
+#   PRIVATE
+#     ../implot/implot_demo.cpp
+#     ../implot/implot_internal.h
+#     ../implot/implot_items.cpp
+#     ../implot/implot.cpp
+#     ../implot/implot.h
+# )
 
 target_link_libraries(bigger PUBLIC bigg rand-util string-util tinyobjloader)
 target_include_directories(bigger PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
